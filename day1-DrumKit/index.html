@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRUM-KIT</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="keys">
+        <div data-key="65" class="key">
+            <kbd>A</kbd>
+            <span class="sound">boomy</span>
+
+        </div>
+        <div data-key="83" class="key">
+            <kbd>S</kbd>
+            <span class="sound">breath</span>
+        </div>
+        <div data-key="68" class="key">
+            <kbd>D</kbd>
+            <span class="sound">hi_hat</span>           
+        </div>
+        <div data-key="70" class="key">
+            <kbd>F</kbd>
+            <span class="sound">claptrap</span>
+            
+        </div>
+        <div data-key="71" class="key">
+            <kbd>G</kbd>
+            <span class="sound">tommy</span>
+            
+        </div>
+        <div data-key="90" class="key">
+            <kbd>Z</kbd>
+            <span class="sound">hou_bass</span>
+        </div>
+        <div data-key="88" class="key">
+            <kbd>X</kbd>
+            <span class="sound">clapperc</span>
+            
+        </div>
+        <div data-key="67" class="key">
+            <kbd>C</kbd>
+            <span class="sound">mainkick</span>
+            
+        </div>
+        <div data-key="86" class="key">
+            <kbd>V</kbd>
+            <span class="sound">techkick</span>
+            
+        </div>
+        <div data-key="66" class="key">
+            <kbd>B</kbd>
+            <span class="sound">vermona</span>
+            
+        </div>
+
+    </div>
+
+    <audio data-key="65" src="sounds/boomy-kick.wav"></audio>
+    <audio data-key="83" src="sounds/breath.mp3"></audio>
+    <audio data-key="68" src="sounds/bright-hi-hat-one-shot_C_minor.wav"></audio>
+    <audio data-key="70" src="sounds/crunchy-trap-clap_150bpm.wav"></audio>
+    <audio data-key="90" src="sounds/deep-house-bass_128bpm_C_major.wav"></audio>
+    <audio data-key="88" src="sounds/one-short-percussion-clap-type_B_major.wav"></audio>
+    <audio data-key="67" src="sounds/Main Room Kick 03.wav"></audio>
+    <audio data-key="86" src="sounds/Techno Kick 01.wav"></audio>
+    <audio data-key="66" src="sounds/Vermona Fx 02.wav"></audio>
+    <audio data-key="71" src="sounds/DX Tom 01.wav"></audio>
+
+
+    <script>
+        
+    
+    function playSound(e) {
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+        if(!audio) return; // stop the function from running all together
+        audio.currentTime = 0;
+        audio.play();
+        key.classList.add('playing');
+    }    
+
+    function removeTransition(e) {
+        if(e.propertyName !== 'transform') return; // skip it if it's not a transform
+        this.classList.remove('playing');
+    }    
+
+    const keys = document.querySelectorAll('.key');
+    keys.forEach( key => key.addEventListener('transitionend', removeTransition));
+    window.addEventListener('keydown', playSound);
+    
+    </script>
+    
+</body>
+</html>
