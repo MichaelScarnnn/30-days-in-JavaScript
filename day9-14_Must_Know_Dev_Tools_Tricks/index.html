@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day9</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1>DAY 9</h1>
+    <P onclick="changer()">some text</P>
+
+
+    <script>
+
+        const dogs = [{ name: "Snickers" , age : 2}, { name : "Hugo", age : 5}];
+
+        function changer() {
+            const p = document.querySelector("p");
+            p.style.color = '#BADA55';
+            p.style.fontSize = '50px';
+        }
+
+        // "%c"
+        console.log('%c Very big size', 'font-size:40px ;color:red')
+        console.warn("OH NO !!")
+        console.error("ERR!!")
+        console.info("Crocodiles eat 3-4 people per year")
+        console.assert(2 === 1, "this is wrong!")
+        /* console.clear() */
+
+        const p = document.querySelector("p");
+        console.dir(p)
+
+        dogs.forEach(dog => {
+            console.groupCollapsed(`${dog.name}`)
+            console.log(`This is ${dog.name}`)
+            console.log(`and ${dog.name} is ${dog.age} years old.`)
+            console.groupEnd(`${dog.name}`)
+        })
+        /* console.clear() */
+        console.count("akif")
+        console.count("akif")
+        console.count("michael")
+        console.count("akif")
+        console.count("michael")
+        console.count("michael")
+        console.count("michael")
+        console.count("akif")
+        console.count("akif")
+        console.count("michael")
+        console.count("michael")
+        console.count("michael")
+
+    </script>
+</body>
+</html>
